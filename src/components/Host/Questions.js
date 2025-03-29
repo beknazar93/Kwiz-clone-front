@@ -100,7 +100,7 @@ class Questions extends Component {
           {/* Блок информации о квизе */}
           <div className="questions__quiz-box">
             {!toggle ? (
-              <>
+              <div>
                 <h1 className="questions__quiz-title">{quiz.quiz_name}</h1>
                 <p className="questions__quiz-desc">{quiz.info}</p>
                 <button
@@ -109,9 +109,9 @@ class Questions extends Component {
                 >
                   Редактировать
                 </button>
-              </>
+              </div>
             ) : (
-              <>
+              <div>
                 <input
                   type="text"
                   className="questions__input--title input-edit"
@@ -137,7 +137,7 @@ class Questions extends Component {
                     Отмена
                   </button>
                 </div>
-              </>
+              </div>
             )}
           </div>
   
