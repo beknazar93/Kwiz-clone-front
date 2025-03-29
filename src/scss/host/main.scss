@@ -1,0 +1,147 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.main__header {
+  margin-bottom: 20px;
+}
+
+.main__logo {
+  width: 180px;
+  height: auto;
+}
+
+.main__new-quiz {
+  margin-bottom: 20px;
+}
+
+.main__button--new {
+  padding: 12px 20px;
+  background-color: #e63946;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.main__button--new:hover {
+  background-color: #f77f89;
+}
+
+.main__list {
+  width: 100%;
+  max-width: 600px;
+}
+
+.main__card {
+  background: #1b263b;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+}
+
+.main__title {
+  color: #ffffff;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.main__description {
+  color: #cbd5e1;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.main__actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.main__button {
+  padding: 10px 16px;
+  background-color: #778da9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.main__button:hover {
+  background-color: #a1b3cd;
+}
+
+/* Адаптация под меньшие экраны */
+@media (max-width: 768px) {
+  .main__logo {
+    width: 150px;
+  }
+
+  .main__button--new,
+  .main__button {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+
+  .main__title {
+    font-size: 20px;
+  }
+
+  .main__description {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main__logo {
+    width: 120px;
+  }
+
+  .main__button--new,
+  .main__button {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .main__title {
+    font-size: 18px;
+  }
+
+  .main__description {
+    font-size: 12px;
+  }
+
+  .main__actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 320px) {
+  .main__logo {
+    width: 100px;
+  }
+
+  .main__button--new,
+  .main__button {
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+
+  .main__title {
+    font-size: 16px;
+  }
+
+  .main__description {
+    font-size: 10px;
+  }
+}

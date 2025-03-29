@@ -1,0 +1,141 @@
+.background {
+  padding: 20px;
+  background-color: #0d1b2a;
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+.btn-go-back {
+  display: inline-block;
+  margin-bottom: 16px;
+  background-color: #415a77;
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-go-back:hover {
+  background-color: #526a8a;
+}
+
+.new-questions-wrapper {
+  background-color: #1b263b;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.new-question {
+  margin-bottom: 16px;
+}
+
+.new-question label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.new-question input {
+  width: 95%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #415a77;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.new-question input::placeholder {
+  color: #cbd5e1;
+}
+
+.new-question input:focus {
+  background-color: #526a8a;
+  outline: none;
+}
+
+.btn-new {
+  background-color: #e63946;
+  color: #ffffff;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-new:hover {
+  background-color: #f77f89;
+}
+
+.new-question-action {
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .new-questions-wrapper {
+    padding: 16px;
+  }
+
+  .btn-go-back,
+  .btn-new {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .new-question input {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  .new-question label {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .new-questions-wrapper {
+    padding: 14px;
+  }
+
+  .btn-go-back,
+  .btn-new {
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .new-question input {
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 320px) {
+  .new-questions-wrapper {
+    padding: 10px;
+  }
+
+  .btn-go-back,
+  .btn-new {
+    font-size: 11px;
+    padding: 8px;
+  }
+
+  .new-question input {
+    font-size: 11px;
+    padding: 6px;
+  }
+
+  .new-question label {
+    font-size: 12px;
+  }
+}

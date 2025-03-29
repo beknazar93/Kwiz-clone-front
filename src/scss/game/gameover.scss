@@ -1,0 +1,91 @@
+.game-over {
+  background-color: #1b263b;
+  padding: 30px 24px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  color: #ffffff;
+  max-width: 700px;
+  margin: 40px auto;
+}
+
+.game-over__title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.game-over__leaderboard {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 16px;
+  background-color: #0d1b2a;
+}
+
+.game-over__leaderboard-header {
+  background-color: #415a77;
+  color: #ffffff;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 14px;
+  border: 1px solid #415a77;
+}
+
+.game-over__leaderboard-cell {
+  padding: 10px 14px;
+  border: 1px solid #415a77;
+  font-size: 14px;
+  color: #cbd5e1;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .game-over {
+    padding: 24px 18px;
+  }
+
+  .game-over__title {
+    font-size: 20px;
+  }
+
+  .game-over__leaderboard-header,
+  .game-over__leaderboard-cell {
+    font-size: 13px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-over {
+    padding: 20px 14px;
+  }
+
+  .game-over__title {
+    font-size: 18px;
+  }
+
+  .game-over__leaderboard-header,
+  .game-over__leaderboard-cell {
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 320px) {
+  .game-over {
+    padding: 16px 10px;
+  }
+
+  .game-over__title {
+    font-size: 16px;
+  }
+
+  .game-over__leaderboard-header,
+  .game-over__leaderboard-cell {
+    font-size: 11px;
+    padding: 6px;
+  }
+}

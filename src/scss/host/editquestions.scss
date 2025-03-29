@@ -1,0 +1,139 @@
+.mapped-container {
+  background-color: #1b263b;
+  padding: 24px;
+  border-radius: 16px;
+  max-width: 600px;
+  margin: 40px auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+}
+
+.mapped-container__btn-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 16px;
+  background-color: #415a77;
+  color: #ffffff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.mapped-container__btn-link:hover {
+  background-color: #526a8a;
+}
+
+.mapped-container__new-q {
+  margin-bottom: 20px;
+}
+
+.mapped-container__new-q label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.mapped-container__new-q input {
+  width: 95%;
+  padding: 12px 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: #415a77;
+  color: #ffffff;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.mapped-container__new-q input::placeholder {
+  color: #cbd5e1;
+}
+
+.mapped-container__new-q input:focus {
+  background-color: #526a8a;
+  outline: none;
+}
+
+.mapped-container__update-btn {
+  margin-top: 16px;
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #e63946;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.mapped-container__update-btn:hover {
+  background-color: #f77f89;
+}
+
+@media (max-width: 768px) {
+  .mapped-container {
+    padding: 20px;
+  }
+
+  .mapped-container__btn-link,
+  .mapped-container__update-btn {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+
+  .mapped-container__new-q input {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
+  .mapped-container__new-q label {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mapped-container {
+    padding: 16px;
+  }
+
+  .mapped-container__btn-link,
+  .mapped-container__update-btn {
+    text-align: center;
+    padding: 10px;
+  }
+
+  .mapped-container__new-q input {
+    font-size: 12px;
+    padding: 9px;
+  }
+
+  .mapped-container__new-q label {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  .mapped-container {
+    padding: 12px;
+  }
+
+  .mapped-container__btn-link,
+  .mapped-container__update-btn {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .mapped-container__new-q input {
+    font-size: 11px;
+    padding: 8px;
+  }
+
+  .mapped-container__new-q label {
+    font-size: 11px;
+  }
+}
