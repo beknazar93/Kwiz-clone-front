@@ -25,7 +25,7 @@ const App = () => {
         <Route path="/player" element={<Player />} />
 
         {/* 🧑‍💼 Профиль администратора */}
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/admin" element={<UserProfile />} />
         <Route path="/winners" element={<Winners />} />
 
         {/* 🧠 Host */}
