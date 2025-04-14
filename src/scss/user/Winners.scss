@@ -1,0 +1,140 @@
+
+.winners__container {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #1b263b;
+    border-radius: 12px;
+    color: #e0e1dd;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  
+  .winners__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #e0e1dd;
+    margin: 0 0 1rem;
+  }
+  
+  .winners__empty {
+    font-size: 0.9rem;
+    color: #8a9ab9;
+    text-align: center;
+    margin: 0;
+  }
+  
+  .winners__history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .winners__history-item {
+    padding: 1rem;
+    border-bottom: 1px solid #5a6b8b;
+    position: relative;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  
+  .winners__quiz-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e0e1dd;
+    margin: 0 0 0.5rem;
+  }
+  
+  .winners__date {
+    font-size: 0.85rem;
+    color: #8a9ab9;
+    margin: 0 0 0.75rem;
+  }
+  
+  .winners__history-winners {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.75rem;
+  }
+  
+  .winners__history-winner {
+    font-size: 0.85rem;
+    color: #8a9ab9;
+    padding: 0.25rem 0;
+  }
+  
+  .winners__delete-btn {
+    padding: 6px 12px;
+    background: #ff4d4d;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  
+    &:hover {
+      background: #ff6666;
+      transform: translateY(-1px);
+    }
+  
+    @media (max-width: 768px) {
+      padding: 5px 10px;
+      font-size: 0.8rem;
+    }
+  
+    @media (max-width: 480px) {
+      padding: 4px 8px;
+      font-size: 0.75rem;
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .winners__container {
+      padding: 0.75rem;
+    }
+  
+    .winners__title {
+      font-size: 1.1rem;
+    }
+  
+    .winners__quiz-name {
+      font-size: 1rem;
+    }
+  
+    .winners__date {
+      font-size: 0.8rem;
+    }
+  
+    .winners__history-winner {
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .winners__container {
+      padding: 0.5rem;
+    }
+  
+    .winners__title {
+      font-size: 1rem;
+    }
+  
+    .winners__history-item {
+      padding: 0.75rem;
+    }
+  
+    .winners__quiz-name {
+      font-size: 0.9rem;
+    }
+  
+    .winners__date {
+      font-size: 0.75rem;
+    }
+  
+    .winners__history-winner {
+      font-size: 0.75rem;
+    }
+  }

@@ -19,7 +19,8 @@ class EditQuestion extends Component {
       answer2: '',
       answer3: '',
       answer4: '',
-      correctAnswer: ''
+      correctAnswer: '',
+      quiz: null, // ✅ добавили quiz
     };
   }
 
@@ -38,72 +39,93 @@ class EditQuestion extends Component {
           answer2: q.answer2,
           answer3: q.answer3,
           answer4: q.answer4,
-          correctAnswer: q.correct_answer
+          correctAnswer: q.correct_answer,
+          quiz: q.quiz, // ✅ сохранить quiz
         });
       })
-      .catch(err => console.error("Error fetching question", err));
+      .catch(err => console.error("Ошибка при получении вопроса:", err));
   }
 
   updateQuestion() {
-    const { question, answer1, answer2, answer3, answer4, correctAnswer, id } = this.state;
-    if (question && answer1 && answer2 && answer3 && answer4 && correctAnswer && id) {
+    const { question, answer1, answer2, answer3, answer4, correctAnswer, id, quiz } = this.state;
+
+    if (question && answer1 && answer2 && answer3 && answer4 && correctAnswer && quiz && id) {
       axios.put(`https://kwiz-clone2.onrender.com/api/questions/${id}/`, {
         question,
         answer1,
         answer2,
         answer3,
         answer4,
-        correct_answer: correctAnswer
+        correct_answer: correctAnswer,
+        quiz, // ✅ обязательно отправляем quiz
       })
-      .then(res => {
-        if (res.status === 200) {
-          this.props.navigate('/host/questions'); // ✅ переход после обновления
-        } else {
-          alert('Something went wrong :(');
-        }
-      })
-      .catch(err => {
-        console.error("Error updating question", err);
-        alert("Error updating question");
-      });
+        .then(res => {
+          if (res.status === 200 || res.status === 204) {
+            this.props.navigate('/host/questions');
+          } else {
+            alert('Ошибка при обновлении!');
+          }
+        })
+        .catch(err => {
+          console.error("Ошибка при отправке обновления:", err);
+          alert("Ошибка при обновлении вопроса");
+        });
     } else {
-      alert('All fields must be completed');
+      alert('Заполни все поля!');
     }
   }
 
   render() {
     return (
-<div className='mapped-container'>
-  <Link to='/host/questions' className='mapped-container__btn-link'>
-    go back
-  </Link>
-  <div className='mapped-container__new-q'>
-    <label>Question</label>
-    <input value={this.state.question} onChange={(e) => this.setState({ question: e.target.value })} />
-  </div>
-  <div className='mapped-container__new-q'>
-    <label>Answer1</label>
-    <input value={this.state.answer1} onChange={(e) => this.setState({ answer1: e.target.value })} />
-  </div>
-  <div className='mapped-container__new-q'>
-    <label>Answer2</label>
-    <input value={this.state.answer2} onChange={(e) => this.setState({ answer2: e.target.value })} />
-  </div>
-  <div className='mapped-container__new-q'>
-    <label>Answer3</label>
-    <input value={this.state.answer3} onChange={(e) => this.setState({ answer3: e.target.value })} />
-  </div>
-  <div className='mapped-container__new-q'>
-    <label>Answer4</label>
-    <input value={this.state.answer4} onChange={(e) => this.setState({ answer4: e.target.value })} />
-  </div>
-  <div className='mapped-container__new-q'>
-    <label>Correct Answer</label>
-    <input type='number' value={this.state.correctAnswer} onChange={(e) => this.setState({ correctAnswer: e.target.value })} />
-    <button className='mapped-container__update-btn' onClick={() => this.updateQuestion()}>Update</button>
-  </div>
-</div>
-
+      <div className="edit-question">
+        <div className="edit-question__card">
+          <div className="edit-question__header">
+            <h2 className="edit-question__title">Изменить вопрос</h2>
+            <Link to="/host/questions" className="edit-question__back-btn">
+              Назад
+            </Link>
+          </div>
+          <div className="edit-question__field">
+            <label className="edit-question__label">Вопрос</label>
+            <input
+              className="edit-question__input"
+              value={this.state.question}
+              onChange={(e) => this.setState({ question: e.target.value })}
+            />
+          </div>
+          <div className="edit-question__answers">
+            {[1, 2, 3, 4].map(n => (
+              <div className="edit-question__field" key={n}>
+                <label className="edit-question__label">Вариант {n}</label>
+                <input
+                  className="edit-question__input"
+                  value={this.state[`answer${n}`]}
+                  onChange={(e) => this.setState({ [`answer${n}`]: e.target.value })}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="edit-question__footer">
+            <div className="edit-question__field edit-question__field--correct">
+              <label className="edit-question__label">Правильный вариант</label>
+              <input
+                type="number"
+                className="edit-question__input"
+                value={this.state.correctAnswer}
+                onChange={(e) => this.setState({ correctAnswer: e.target.value })}
+                min="1"
+                max="4"
+              />
+            </div>
+            <button
+              className="edit-question__update-btn"
+              onClick={() => this.updateQuestion()}
+            >
+              Обновить
+            </button>
+          </div>
+        </div>
+      </div>
     );
   }
 }

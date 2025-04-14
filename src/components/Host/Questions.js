@@ -86,101 +86,88 @@ class Questions extends Component {
 
   render() {
     const { questions, quiz, toggle } = this.state;
+    let mappedQuestions = [];
+    if (questions && questions.length > 0) {
+      mappedQuestions = questions.map(question => {
+        return (
+          <div key={question.id} className='questions__container'>
+            <h1 className='questions__title'>{question.question}</h1>
+            <ul className='questions__list'>
+              <li className='questions__item'>1: {question.answer1}</li>
+              <li className='questions__item'>2: {question.answer2}</li>
+              <li className='questions__item'>3: {question.answer3}</li>
+              <li className='questions__item'>4: {question.answer4}</li>
+              <li className='questions__item questions__item--correct'>Правильный: {question.correct_answer}</li>
+            </ul>
+            <div className='questions__actions'>
+              <Link to={`/host/editquestion/${question.id}`}>
+                <button className='questions__button'>Изменить</button>
+              </Link>
+              <button onClick={() => this.deleteQuestion(question.id)} className='questions__button'>Удалить</button>
+            </div>
+          </div>
+        );
+      });
+    }
   
     return (
-      <div className="questions__page">
-        <div className="questions__container-center">
-          {/* Верхняя кнопка "Done" */}
-          <div className="questions__top-bar">
-            <Link to="/host">
-              <button className="questions__button--done">Done</button>
+      <div className='questions__page'>
+        {!toggle ? (
+          <div className='questions__toggle'>
+            <div className='questions__done'>
+              <Link to='/host'>
+                <button className='questions__button--done'>Назад</button>
+              </Link>
+            </div>
+            <div className='questions__edit'>
+              <h1 className='questions__quiz-title'>{quiz.quiz_name}</h1>
+              <br />
+              <p className='questions__quiz-desc'>{quiz.info}</p>
+              <div className='questions__update'>
+                <button onClick={() => this.displayEdit()} className='questions__button'>Изменить</button>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className='questions__toggle'>
+            <div className='questions__done'>
+              <Link to='/host'>
+                <button className='questions__button--done'>Назад</button>
+              </Link>
+            </div>
+            <div className='questions__edit'>
+              <input
+                placeholder={quiz.quiz_name}
+                onChange={(e) => this.setState({ newName: e.target.value })}
+                className='questions__input--title input-edit'
+              />
+              <br/>
+              <textarea
+                placeholder={quiz.info}
+                onChange={(e) => this.setState({ newInfo: e.target.value })}
+                className='questions__input--desc input-edit'
+              ></textarea>
+              <div className='questions__actions'>
+                <button onClick={() => this.updateQuiz()} className='questions__button'>Сохранить</button>
+                <button onClick={() => this.displayEdit()} className='questions__button'>Отмена</button>
+              </div>
+            </div>
+          </div>
+        )}
+        <div className='questions__wrapper'>
+          <div className='questions__add'>
+            <Link to={`/host/newquestion/${quiz.id}`} className='questions__link'>
+              <button className='questions__button--new'>Добавить вопрос</button>
             </Link>
           </div>
-  
-          {/* Блок информации о квизе */}
-          <div className="questions__quiz-box">
-            {!toggle ? (
-              <div>
-                <h1 className="questions__quiz-title">{quiz.quiz_name}</h1>
-                <p className="questions__quiz-desc">{quiz.info}</p>
-                <button
-                  className="questions__button"
-                  onClick={() => this.displayEdit()}
-                >
-                  Редактировать
-                </button>
-              </div>
-            ) : (
-              <div>
-                <input
-                  type="text"
-                  className="questions__input--title input-edit"
-                  placeholder={quiz.quiz_name}
-                  onChange={(e) => this.setState({ newName: e.target.value })}
-                />
-                <textarea
-                  className="questions__input--desc input-edit"
-                  placeholder={quiz.info}
-                  onChange={(e) => this.setState({ newInfo: e.target.value })}
-                />
-                <div className="questions__actions">
-                  <button
-                    className="questions__button"
-                    onClick={() => this.updateQuiz()}
-                  >
-                    Сохранить
-                  </button>
-                  <button
-                    className="questions__button"
-                    onClick={() => this.displayEdit()}
-                  >
-                    Отмена
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-  
-          {/* Кнопка добавления */}
-          <div className="questions__add-button">
-            <Link to={`/host/newquestion/${quiz.id}`}>
-              <button className="questions__button--new">+ Добавить вопрос</button>
-            </Link>
-          </div>
-  
-          {/* Список вопросов */}
-          <div className="questions__mapped">
-            {questions?.map((question) => (
-              <div key={question.id} className="questions__question-card">
-                <h3 className="questions__title">{question.question}</h3>
-                <ul className="questions__list">
-                  <li className="questions__item">1: {question.answer1}</li>
-                  <li className="questions__item">2: {question.answer2}</li>
-                  <li className="questions__item">3: {question.answer3}</li>
-                  <li className="questions__item">4: {question.answer4}</li>
-                  <li className="questions__item questions__item--correct">
-                    Correct: {question.correct_answer}
-                  </li>
-                </ul>
-                <div className="questions__actions">
-                  <Link to={`/host/editquestion/${question.id}`}>
-                    <button className="questions__button">Редактировать</button>
-                  </Link>
-                  <button
-                    onClick={() => this.deleteQuestion(question.id)}
-                    className="questions__button"
-                  >
-                    Удалить
-                  </button>
-                </div>
-              </div>
-            ))}
+          <br /><br />
+          <div className='questions__mapped'>
+            {mappedQuestions}
           </div>
         </div>
       </div>
     );
   }
-  
   
 }
 

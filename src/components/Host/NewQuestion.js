@@ -62,35 +62,35 @@ class New_Question extends Component {
 
     return (
       <div className='background'>
-        <Link to='/host/questions' className='btn-go-back'>go back pls :)</Link>
+        <Link to='/host/questions' className='btn-go-back'>Назад :)</Link>
         <br />
         <div className='new-questions-wrapper'>
           <div className='new-question'>
-            <label>Question</label>
+            <label>Вопрос</label>
             <input onChange={(e) => this.setState({ question: e.target.value })} />
           </div>
           <div className='new-question'>
-            <label>Answer1</label>
+            <label>Вариант 1</label>
             <input onChange={(e) => this.setState({ answer1: e.target.value })} />
           </div>
           <div className='new-question'>
-            <label>Answer2</label>
+            <label>Вариант 2</label>
             <input onChange={(e) => this.setState({ answer2: e.target.value })} />
           </div>
           <div className='new-question'>
-            <label>Answer3</label>
+            <label>Вариант 3</label>
             <input onChange={(e) => this.setState({ answer3: e.target.value })} />
           </div>
           <div className='new-question'>
-            <label>Answer4</label>
+            <label>Вариант 4</label>
             <input onChange={(e) => this.setState({ answer4: e.target.value })} />
           </div>
           <div className='new-question'>
-            <label>Correct answer</label>
+            <label>Правильный вариант</label>
             <input type='number' min='1' max='4' onChange={(e) => this.setState({ correct_answer: e.target.value })} />
           </div>
           <div className='new-question-action'>
-            <button onClick={this.addQuestion} className='btn-new'>Next</button>
+            <button onClick={this.addQuestion} className='btn-new'>Добавить</button>
           </div>
         </div>
       </div>

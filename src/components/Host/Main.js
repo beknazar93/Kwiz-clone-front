@@ -54,10 +54,10 @@ class Main extends Component {
         <h1 className="main__title">{quiz.quiz_name}</h1>
         <p className="main__description">{quiz.info}</p>
         <div className="main__actions">
-          <button onClick={() => this.setRedirect(quiz)} className="main__button">Play</button>
-          <button onClick={() => this.deleteQuiz(quiz.id)} className="main__button">Delete</button>
+          <button onClick={() => this.setRedirect(quiz)} className="main__button">Играть</button>
+          <button onClick={() => this.deleteQuiz(quiz.id)} className="main__button">Удалить</button>
           <Link to="/host/questions">
-            <button onClick={() => this.props.editingQuiz(quiz)} className="main__button">Edit</button>
+            <button onClick={() => this.props.editingQuiz(quiz)} className="main__button">Изменить</button>
           </Link>
         </div>
       </div>
@@ -70,7 +70,7 @@ class Main extends Component {
         </div>
         <div className="main__new-quiz">
           <Link to="/host/newquiz" className="main__link">
-            <button className="main__button--new">New Kwizz!</button>
+            <button className="main__button--new">Новая игра!</button>
           </Link>
         </div>
         <div className="main__list">

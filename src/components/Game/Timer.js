@@ -13,10 +13,10 @@ const Timer = ({ duration = 15, onTimeout }) => {
   }, [seconds, onTimeout]);
 
   return <div className="timer">
-  <span className="timer__icon">⏱️</span>
-  <span className="timer__seconds">{seconds}s</span>
-</div>
-;
+    <span className="timer__icon">⏱️</span>
+    <span className="timer__seconds">{seconds}с</span>
+  </div>
+    ;
 };
 
 export default Timer;

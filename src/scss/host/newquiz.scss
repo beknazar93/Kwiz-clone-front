@@ -1,122 +1,149 @@
+
 .new-quiz {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 20px;
+  padding: 20px 15px;
+  background: #0d1b2a;
 }
 
 .new-quiz__form {
-  background-color: #1b263b;
-  padding: 40px 30px;
-  border-radius: 16px;
   width: 100%;
   max-width: 500px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  background: #1b263b;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .new-quiz__label {
-  font-size: 18px;
-  color: #ffffff;
-  display: block;
-  margin-bottom: 10px;
-}
-
-.new-quiz__input,
-.new-quiz__textarea {
-  width: 94%;
-  padding: 14px 16px;
-  margin-bottom: 16px;
-  border-radius: 8px;
-  border: none;
-  background-color: #415a77;
-  color: #ffffff;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  font-weight: 500;
+  color: #e0e1dd;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-.new-quiz__input::placeholder,
-.new-quiz__textarea::placeholder {
-  color: #cbd5e1;
-}
-
-.new-quiz__input:focus,
-.new-quiz__textarea:focus {
-  background-color: #526a8a;
+.new-quiz__input {
+  width: 100%;
+  padding: 12px 14px;
+  background: #2a3449;
+  border: 1px solid #5a6b8b;
+  border-radius: 8px;
+  color: #e0e1dd;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.new-quiz__input:focus {
+  border-color: #4a7bff;
 }
 
 .new-quiz__textarea {
-  height: 150px;
+  width: 100%;
+  padding: 12px 14px;
+  background: #2a3449;
+  border: 1px solid #5a6b8b;
+  border-radius: 8px;
+  color: #e0e1dd;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  outline: none;
   resize: vertical;
+  min-height: 100px;
+  transition: border-color 0.2s ease;
+}
+
+.new-quiz__textarea:focus {
+  border-color: #4a7bff;
 }
 
 .new-quiz__actions {
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .new-quiz__button {
-  padding: 12px 20px;
-  background-color: #e63946;
-  color: #ffffff;
+  padding: 12px 24px;
+  background: #4a7bff;
   border: none;
   border-radius: 8px;
-  font-weight: bold;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .new-quiz__button:hover {
-  background-color: #f77f89;
+  background: #6b91ff;
+  transform: translateY(-1px);
 }
 
-/* Адаптация */
 @media (max-width: 768px) {
-  .new-quiz__form {
-    padding: 30px 20px;
+  .new-quiz {
+    padding: 15px 10px;
   }
 
-  .new-quiz__input,
-  .new-quiz__textarea {
-    padding: 12px;
+  .new-quiz__form {
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  .new-quiz__label {
     font-size: 14px;
   }
 
+  .new-quiz__input {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
+  .new-quiz__textarea {
+    font-size: 13px;
+    padding: 10px 12px;
+    min-height: 80px;
+  }
+
   .new-quiz__button {
-    padding: 10px 16px;
+    padding: 10px 20px;
+    font-size: 14px;
   }
 }
 
 @media (max-width: 480px) {
   .new-quiz__form {
-    padding: 20px 15px;
+    padding: 12px;
   }
 
-  .new-quiz__input,
-  .new-quiz__textarea {
-    padding: 10px;
+  .new-quiz__label {
     font-size: 13px;
   }
 
-  .new-quiz__button {
-    width: 100%;
-    padding: 12px;
-  }
-}
-
-@media (max-width: 320px) {
-  .new-quiz__form {
-    padding: 15px 10px;
+  .new-quiz__input {
+    font-size: 12px;
+    padding: 8px 10px;
   }
 
-  .new-quiz__input,
   .new-quiz__textarea {
-    padding: 8px;
     font-size: 12px;
+    padding: 8px 10px;
+    min-height: 60px;
   }
 
   .new-quiz__button {
-    padding: 10px;
-    font-size: 12px;
+    padding: 10px 16px;
+    font-size: 13px;
+    width: 100%;
+  }
+
+  .new-quiz__actions {
+    justify-content: center;
   }
 }

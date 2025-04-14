@@ -1,62 +1,85 @@
+
 .main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  min-height: 100vh;
+  padding: 30px 15px;
+  background: #0d1b2a;
 }
 
 .main__header {
-  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .main__logo {
-  width: 180px;
+  max-width: 140px;
   height: auto;
 }
 
 .main__new-quiz {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.main__link {
+  text-decoration: none;
 }
 
 .main__button--new {
-  padding: 12px 20px;
-  background-color: #e63946;
-  color: white;
+  padding: 12px 24px;
+  background: #4a7bff;
   border: none;
   border-radius: 8px;
-  font-weight: bold;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .main__button--new:hover {
-  background-color: #f77f89;
+  background: #6b91ff;
+  transform: translateY(-1px);
+}
+
+.main__button--new:active {
+  transform: translateY(0);
 }
 
 .main__list {
   width: 100%;
-  max-width: 600px;
+  max-width: 800px; 
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
 }
 
 .main__card {
   background: #1b263b;
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 20px;
-  margin-bottom: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .main__title {
-  color: #ffffff;
-  font-size: 24px;
-  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #e0e1dd;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
 }
 
 .main__description {
-  color: #cbd5e1;
-  font-size: 16px;
-  margin-bottom: 16px;
+  font-size: 14px;
+  color: #8a9ab9;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
 }
 
 .main__actions {
@@ -66,50 +89,51 @@
 }
 
 .main__button {
-  padding: 10px 16px;
-  background-color: #778da9;
-  color: white;
+  padding: 10px 20px;
+  background: #5a6b8b;
   border: none;
   border-radius: 8px;
-  font-weight: bold;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .main__button:hover {
-  background-color: #a1b3cd;
+  background: #7385a8;
+  transform: translateY(-1px);
 }
 
-/* Адаптация под меньшие экраны */
+.main__button:active {
+  transform: translateY(0);
+}
+
+// Кнопка Play выделяется цветом
+.main__button:first-child {
+  background: #4a7bff;
+}
+
+.main__button:first-child:hover {
+  background: #6b91ff;
+}
+
 @media (max-width: 768px) {
+  .main {
+    padding: 20px 10px;
+  }
+
   .main__logo {
-    width: 150px;
+    max-width: 120px;
   }
 
-  .main__button--new,
-  .main__button {
-    padding: 10px 14px;
-    font-size: 14px;
+  .main__list {
+    max-width: 100%;
   }
 
-  .main__title {
-    font-size: 20px;
-  }
-
-  .main__description {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .main__logo {
-    width: 120px;
-  }
-
-  .main__button--new,
-  .main__button {
-    padding: 8px 10px;
-    font-size: 12px;
+  .main__card {
+    padding: 16px;
   }
 
   .main__title {
@@ -117,24 +141,35 @@
   }
 
   .main__description {
-    font-size: 12px;
+    font-size: 13px;
   }
 
-  .main__actions {
-    flex-direction: column;
-    gap: 8px;
+  .main__button {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .main__button--new {
+    padding: 10px 20px;
+    font-size: 14px;
   }
 }
 
-@media (max-width: 320px) {
-  .main__logo {
-    width: 100px;
+@media (max-width: 480px) {
+  .main__header {
+    margin-bottom: 20px;
   }
 
-  .main__button--new,
-  .main__button {
-    padding: 6px 8px;
-    font-size: 10px;
+  .main__logo {
+    max-width: 100px;
+  }
+
+  .main__new-quiz {
+    margin-bottom: 20px;
+  }
+
+  .main__card {
+    padding: 12px;
   }
 
   .main__title {
@@ -142,6 +177,21 @@
   }
 
   .main__description {
-    font-size: 10px;
+    font-size: 12px;
+  }
+
+  .main__actions {
+    gap: 8px;
+  }
+
+  .main__button {
+    padding: 8px 14px;
+    font-size: 12px;
+    flex-grow: 1; 
+  }
+
+  .main__button--new {
+    padding: 8px 16px;
+    font-size: 13px;
   }
 }

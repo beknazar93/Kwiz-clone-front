@@ -1,0 +1,37 @@
+/* src/App.css или глобальный стиль */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif; /* Современный, чистый шрифт */
+  background-color: #0d1b2a; /* Тёмный фон оставляем */
+  color: #e0e1dd; /* Светлый текст для контраста */
+  line-height: 1.6;
+  overflow-x: hidden; /* Предотвращаем горизонтальный скролл */
+}
+
+/* Импорты оставляем как есть */
+@import './components/Landing/Landing.scss';
+@import './scss/host/main.scss';
+@import './scss/host/newquiz.scss';
+@import './scss/host/questions.scss';
+@import './scss/host/newquestions.scss';
+@import './scss/host/editquestions.scss';
+@import './scss/game/game.scss';
+@import './scss/game/gameover.scss';
+@import './scss/game/player.scss';
+@import './scss/game/playerquestions.scss';
+@import './scss/game/timer.scss';
+@import './scss/user/UserProfile.scss';
+@import './scss/user/Winners.scss';
+
+button, .btn {
+  transition: all 0.3s ease;
+}
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}

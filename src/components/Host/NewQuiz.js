@@ -43,12 +43,12 @@ class NewQuiz extends Component {
     return (
       <div class='new-quiz'>
         <div class='new-quiz__form'>
-          <label class='new-quiz__label'>New Kwizz Title</label>
+          <label class='new-quiz__label'>Название игры</label>
           <input class='new-quiz__input' onChange={this.handleInput} type='text' />
-          <label class='new-quiz__label'>Description</label>
+          <label class='new-quiz__label'>Описание</label>
           <textarea class='new-quiz__textarea' onChange={this.handleTextarea}></textarea>
           <div class='new-quiz__actions'>
-            <button onClick={this.createQuiz} class='new-quiz__button'>Ok, Go</button>
+            <button onClick={this.createQuiz} class='new-quiz__button'>Ок, Начали</button>
           </div>
         </div>
       </div>

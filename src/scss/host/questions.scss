@@ -1,204 +1,250 @@
 .questions__page {
-  font-family: 'Arial', sans-serif;
-  background-color: #0d1b2a;
-  color: #ffffff;
-  padding: 20px;
-  min-height: 100vh;
-}
-
-.questions__container-center {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 30px 20px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  align-items: center;
+  min-height: 100vh;
+  padding: 30px 15px;
+  background: #0d1b2a;
 }
 
-.questions__top-bar {
+.questions__toggle {
+  width: 100%;
+  max-width: 800px;
+  background: #1b263b;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+}
+
+.questions__done {
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 20px;
 }
 
-.questions__quiz-box {
-  background: #1b263b;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+.questions__button--done {
+  padding: 10px 20px;
+  background: #4a7bff;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.questions__button--done:hover {
+  background: #6b91ff;
+  transform: translateY(-1px);
+}
+
+.questions__edit {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  align-items: center;
+  gap: 12px;
 }
 
 .questions__quiz-title {
   font-size: 24px;
-  font-weight: bold;
-  color: #ffffff;
+  font-weight: 600;
+  color: #e0e1dd;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   margin: 0;
 }
 
 .questions__quiz-desc {
-  color: #cbd5e1;
-  font-size: 16px;
+  font-size: 14px;
+  color: #8a9ab9;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   margin: 0;
+  text-align: center;
 }
 
-.questions__input--title,
-.questions__input--desc {
-  background-color: #415a77;
-  color: #ffffff;
-  border: none;
+.questions__update {
+  margin-top: 12px;
+}
+
+.questions__input--title {
+  width: 100%;
+  max-width: 400px;
   padding: 12px 14px;
+  background: #2a3449;
+  border: 1px solid #5a6b8b;
   border-radius: 8px;
+  color: #e0e1dd;
   font-size: 16px;
-  transition: background-color 0.3s ease;
-  width: 93%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  outline: none;
+  transition: border-color 0.2s ease;
 }
 
-.questions__input--title::placeholder,
-.questions__input--desc::placeholder {
-  color: #cbd5e1;
+.questions__input--title:focus {
+  border-color: #4a7bff;
 }
 
 .questions__input--desc {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 14px;
+  background: #2a3449;
+  border: 1px solid #5a6b8b;
+  border-radius: 8px;
+  color: #e0e1dd;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  outline: none;
   resize: vertical;
-  min-height: 120px;
+  min-height: 80px;
+  transition: border-color 0.2s ease;
 }
 
-.questions__input--title:focus,
 .questions__input--desc:focus {
-  background-color: #526a8a;
-  outline: none;
+  border-color: #4a7bff;
+}
+
+.questions__wrapper {
+  width: 100%;
+  max-width: 800px;
+}
+
+.questions__add {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.questions__link {
+  text-decoration: none;
+}
+
+.questions__button--new {
+  padding: 12px 24px;
+  background: #4a7bff;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.questions__button--new:hover {
+  background: #6b91ff;
+  transform: translateY(-1px);
+}
+
+.questions__mapped {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.questions__container {
+  background: #1b263b;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.questions__title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #e0e1dd;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0 0 12px;
+}
+
+.questions__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+}
+
+.questions__item {
+  font-size: 14px;
+  color: #8a9ab9;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin-bottom: 8px;
+}
+
+.questions__item--correct {
+  color: #4a7bff;
+  font-weight: 500;
 }
 
 .questions__actions {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  margin-top: 10px;
 }
 
-.questions__button,
-.questions__button--done,
-.questions__button--new {
-  padding: 12px 20px;
-  background-color: #778da9;
-  color: #ffffff;
+.questions__button {
+  padding: 10px 20px;
+  background: #5a6b8b;
   border: none;
   border-radius: 8px;
-  font-weight: bold;
-  font-size: 15px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.questions__button--done {
-  background-color: #415a77;
+.questions__button:hover {
+  background: #7385a8;
+  transform: translateY(-1px);
 }
-
-.questions__button--new {
-  background-color: #e63946;
-}
-
-.questions__button:hover,
-.questions__button--done:hover,
-.questions__button--new:hover {
-  background-color: #a1b3cd;
-}
-
-.questions__add-button {
-  text-align: center;
-}
-
-.questions__mapped {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.questions__question-card {
-  background-color: #1b263b;
-  padding: 24px;
-  border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-}
-
-.questions__title {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 12px;
-}
-
-.questions__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.questions__item {
-  background-color: #415a77;
-  padding: 10px 14px;
-  border-radius: 8px;
-  font-size: 15px;
-}
-
-.questions__item--correct {
-  background-color: #2e4734;
-  border-left: 4px solid #4caf50;
-}
-
-//
-// АДАПТАЦИЯ
-//
 
 @media (max-width: 768px) {
-  .questions__container-center {
-    padding: 20px 15px;
+  .questions__page {
+    padding: 20px 10px;
   }
 
-  .questions__quiz-box {
-    padding: 20px;
+  .questions__toggle {
+    padding: 16px;
   }
 
   .questions__quiz-title {
     font-size: 20px;
   }
 
-  .questions__input--title,
-  .questions__input--desc {
-    font-size: 14px;
-  }
-
-  .questions__button,
-  .questions__button--done,
-  .questions__button--new {
-    font-size: 14px;
-    padding: 10px 16px;
-  }
-
-  .questions__actions {
-    flex-direction: column;
-    gap: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .questions__quiz-title {
-    font-size: 18px;
-  }
-
-  .questions__input--title,
-  .questions__input--desc {
+  .questions__quiz-desc {
     font-size: 13px;
   }
 
-  .questions__button,
-  .questions__button--done,
+  .questions__input--title {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+
+  .questions__input--desc {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
+  .questions__button {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .questions__button--done {
+    padding: 8px 16px;
+  }
+
   .questions__button--new {
-    width: 100%;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .questions__container {
+    padding: 16px;
   }
 
   .questions__title {
@@ -206,32 +252,57 @@
   }
 
   .questions__item {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 
-@media (max-width: 320px) {
-  .questions__quiz-box {
-    padding: 15px;
+@media (max-width: 480px) {
+  .questions__toggle {
+    padding: 12px;
   }
 
   .questions__quiz-title {
-    font-size: 16px;
+    font-size: 18px;
   }
 
-  .questions__input--title,
-  .questions__input--desc {
+  .questions__quiz-desc {
     font-size: 12px;
-    padding: 10px;
+  }
+
+  .questions__input--title {
+    max-width: 100%;
+    font-size: 13px;
+  }
+
+  .questions__input--desc {
+    max-width: 100%;
+    font-size: 12px;
   }
 
   .questions__button {
+    padding: 8px 14px;
     font-size: 12px;
-    padding: 8px;
+    flex-grow: 1;
+  }
+
+  .questions__button--done {
+    padding: 8px 14px;
+  }
+
+  .questions__button--new {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .questions__container {
+    padding: 12px;
+  }
+
+  .questions__title {
+    font-size: 16px;
   }
 
   .questions__item {
     font-size: 12px;
-    padding: 8px 10px;
   }
 }
