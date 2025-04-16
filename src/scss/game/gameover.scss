@@ -1,4 +1,4 @@
-// src/scss/game-over/game-over.scss
+
 
 .game-over {
   width: 100%;
@@ -44,17 +44,17 @@
 }
 
 .game-over__winner--1 {
-  background: #FFD700; /* Золотой для первого места */
+  background: #FFD700; 
   color: #1b263b;
 }
 
 .game-over__winner--2 {
-  background: #C0C0C0; /* Серебряный для второго места */
+  background: #C0C0C0;
   color: #1b263b;
 }
 
 .game-over__winner--3 {
-  background: #CD7F32; /* Бронзовый для третьего места */
+  background: #CD7F32; 
   color: #1b263b;
 }
 
