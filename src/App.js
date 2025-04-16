@@ -15,7 +15,6 @@ import NewQuestion from './components/Host/NewQuestion';
 import EditQuestion from './components/Host/EditQuestion';
 
 import './App.css';
-import './App.scss';
 
 const App = () => {
   return (

@@ -35,6 +35,14 @@ const Game = () => {
   const socketRef = useRef(null);
   const timerRef = useRef(null);
 
+  // Функция для правильного склонения слова "балл"
+  const getScoreText = (score) => {
+    if (score % 10 === 1 && score % 100 !== 11) return `${score} балл`;
+    if ([2, 3, 4].includes(score % 10) && ![12, 13, 14].includes(score % 100))
+      return `${score} балла`;
+    return `${score} баллов`;
+  };
+
   const waitForSocketConnection = (callback) => {
     const socket = socketRef.current;
     if (!socket || socket.readyState === WebSocket.OPEN) {
@@ -83,13 +91,23 @@ const Game = () => {
       setAnsweredPlayers([]);
       setShowResults(false);
       waitForSocketConnection(() => {
-        socketRef.current.send(JSON.stringify({ event: "new-question", payload: { ...question, time: 30 } }));
+        socketRef.current.send(
+          JSON.stringify({
+            event: "new-question",
+            payload: { ...question, time: 30 },
+          })
+        );
       });
       startTimer();
     } else {
       setGameOver(true);
       waitForSocketConnection(() => {
-        socketRef.current.send(JSON.stringify({ event: "game-over", payload: { leaderboard: leaderBoard } }));
+        socketRef.current.send(
+          JSON.stringify({
+            event: "game-over",
+            payload: { leaderboard: leaderBoard },
+          })
+        );
       });
       sendWinnersToApi();
     }
@@ -97,7 +115,12 @@ const Game = () => {
 
   const showRoundResults = () => {
     waitForSocketConnection(() => {
-      socketRef.current.send(JSON.stringify({ event: "question-results", payload: { leaderboard: leaderBoard } }));
+      socketRef.current.send(
+        JSON.stringify({
+          event: "question-results",
+          payload: { leaderboard: leaderBoard },
+        })
+      );
     });
     setShowResults(true);
   };
@@ -109,7 +132,12 @@ const Game = () => {
     } else {
       setGameOver(true);
       waitForSocketConnection(() => {
-        socketRef.current.send(JSON.stringify({ event: "game-over", payload: { leaderboard: leaderBoard } }));
+        socketRef.current.send(
+          JSON.stringify({
+            event: "game-over",
+            payload: { leaderboard: leaderBoard },
+          })
+        );
       });
       sendWinnersToApi();
     }
@@ -127,12 +155,17 @@ const Game = () => {
 
     const winnersData = {
       quiz_name: quiz.title || "Без названия",
-      level: profile.schools.find((s) => s.id === selectedSchoolId)?.levels.find((l) => l.id === selectedLevelId)?.title || "Неизвестный уровень",
+      level:
+        profile.schools
+          .find((s) => s.id === selectedSchoolId)
+          ?.levels.find((l) => l.id === selectedLevelId)?.title ||
+        "Неизвестный уровень",
       date: new Date().toISOString(),
       winners: top3,
     };
 
-    axios.post("https://rasu0101.pythonanywhere.com/winners/winners/", winnersData)
+    axios
+      .post("https://rasu0101.pythonanywhere.com/winners/winners/", winnersData)
       .then((res) => console.log("Топ-3 отправлены:", res.data))
       .catch((err) => console.error("Ошибка отправки топ-3:", err));
   };
@@ -152,38 +185,53 @@ const Game = () => {
     const selectedParticipants = participants
       .sort(() => Math.random() - 0.5)
       .slice(0, Math.min(15, participants.length))
-      .map(name => ({ name }));
+      .map((name) => ({ name }));
 
     setPlayers(selectedParticipants);
-    setLeaderBoard(selectedParticipants.map(player => ({ name: player.name, score: 0 })));
+    setLeaderBoard(
+      selectedParticipants.map((player) => ({ name: player.name, score: 0 }))
+    );
     setConnectedPlayers([]); // Изначально никто не подключился
 
     // Разрешаем доступ только выбранным игрокам
-    dispatch(setAllowedStudents(selectedParticipants.map(p => p.name)));
+    dispatch(setAllowedStudents(selectedParticipants.map((p) => p.name)));
     waitForSocketConnection(() => {
-      socketRef.current.send(JSON.stringify({ event: "allowed-students", payload: { students: selectedParticipants.map(p => p.name) } }));
+      socketRef.current.send(
+        JSON.stringify({
+          event: "allowed-students",
+          payload: { students: selectedParticipants.map((p) => p.name) },
+        })
+      );
     });
 
     setStep("preStart");
   };
 
   useEffect(() => {
-    axios.get("https://rasu0101.pythonanywhere.com/user/user/").then((res) => {
-      dispatch(setProfile(res.data[0]));
-    });
+    axios
+      .get("https://rasu0101.pythonanywhere.com/user/user/")
+      .then((res) => {
+        dispatch(setProfile(res.data[0]));
+      });
 
     if (!quiz.id) return;
-    axios.get(`https://kwiz-clone2.onrender.com/api/quizzes/${quiz.id}/`).then((res) => setQuestions(res.data.questions || []));
+    axios
+      .get(`https://kwiz-clone2.onrender.com/api/quizzes/${quiz.id}/`)
+      .then((res) => setQuestions(res.data.questions || []));
     generatePin();
   }, [quiz, dispatch]);
 
   useEffect(() => {
     if (!selectedPin) return;
-    const socket = new WebSocket(`wss://kwiz-clone2.onrender.com/ws/quiz/${selectedPin}/`);
+    const socket = new WebSocket(
+      `wss://kwiz-clone2.onrender.com/ws/quiz/${selectedPin}/`
+    );
     socketRef.current = socket;
 
     socket.onopen = () => {
-      socket.send(JSON.stringify({ event: "host-join", payload: { pin: selectedPin } }));
+      socket.send(
+        JSON.stringify({ event: "host-join", payload: { pin: selectedPin } })
+      );
     };
 
     socket.onmessage = (event) => {
@@ -193,7 +241,7 @@ const Game = () => {
       switch (data.event) {
         case "player-joined":
           // Разрешаем подключение только выбранным игрокам
-          if (name && players.find(p => p.name === name) && !isLive) {
+          if (name && players.find((p) => p.name === name) && !isLive) {
             setConnectedPlayers((prev) => {
               if (!prev.includes(name)) {
                 return [...prev, name];
@@ -203,7 +251,12 @@ const Game = () => {
           } else if (name && !isLive) {
             console.log(`Игрок ${name} не в списке выбранных`);
             waitForSocketConnection(() => {
-              socketRef.current.send(JSON.stringify({ event: "access-denied", payload: { name } }));
+              socketRef.current.send(
+                JSON.stringify({
+                  event: "access-denied",
+                  payload: { name },
+                })
+              );
             });
           }
           break;
@@ -251,7 +304,7 @@ const Game = () => {
   const gameLink = `${window.location.origin}/?pin=${pin}`;
 
   return (
-<div className="game__container">
+    <div className="game__container">
       {/* Этап выбора школы */}
       {!isLive && !gameOver && step === "selectSchool" && (
         <div className="game__select-school">
@@ -259,7 +312,10 @@ const Game = () => {
           <ul className="game__school-list">
             {profile.schools.map((school) => (
               <li key={school.id} className="game__school-item">
-                <button onClick={() => handleSchoolSelect(school)} className="game__select-btn">
+                <button
+                  onClick={() => handleSchoolSelect(school)}
+                  className="game__select-btn"
+                >
                   {school.name}
                 </button>
               </li>
@@ -277,7 +333,10 @@ const Game = () => {
               .find((s) => s.id === selectedSchoolId)
               ?.levels.map((level) => (
                 <li key={level.id} className="game__level-item">
-                  <button onClick={() => handleLevelSelect(level)} className="game__select-btn">
+                  <button
+                    onClick={() => handleLevelSelect(level)}
+                    className="game__select-btn"
+                  >
                     {level.title} (Учеников: {level.participants.length})
                   </button>
                 </li>
@@ -292,7 +351,11 @@ const Game = () => {
           <div className="game__pin">
             <p className="game__pin-title">Kwizz PIN</p>
             <h1 className="game__pin-number">{pin}</h1>
-            <QRCodeCanvas value={gameLink} size={200} className="game__qr-code" />
+            <QRCodeCanvas
+              value={gameLink}
+              size={200}
+              className="game__qr-code"
+            />
             <p className="game__scan-instruction">📷 Сканируйте</p>
           </div>
 
@@ -304,7 +367,9 @@ const Game = () => {
               <p className="game__joined-notice">Выбранные игроки:</p>
               <div className="game__players-grid">
                 {players.map((p, i) => (
-                  <span key={i} className="game__player-name">{p.name}</span>
+                  <span key={i} className="game__player-name">
+                    {p.name}
+                  </span>
                 ))}
               </div>
             </div>
@@ -313,7 +378,9 @@ const Game = () => {
               {connectedPlayers.length > 0 ? (
                 <div className="game__players-grid">
                   {connectedPlayers.map((name, i) => (
-                    <span key={i} className="game__connected-name">{name}</span>
+                    <span key={i} className="game__connected-name">
+                      {name}
+                    </span>
                   ))}
                 </div>
               ) : (
@@ -348,23 +415,40 @@ const Game = () => {
               </tr>
             </thead>
             <tbody>
-              {leaderBoard.map((player, index) => (
-                <tr key={index} className={index < 3 ? `game-over__leaderboard-row--top-${index + 1}` : ""}>
-                  <td>{index + 1}</td>
-                  <td>{player.name}</td>
-                  <td>{player.score} балл</td>
-                </tr>
-              ))}
+              {[...leaderBoard]
+                .sort((a, b) => b.score - a.score) // Сортировка по убыванию очков
+                .map((player, index) => (
+                  <tr
+                    key={index}
+                    className={
+                      index < 3
+                        ? `game-over__leaderboard-row--top-${index + 1}`
+                        : ""
+                    }
+                  >
+                    <td>{index + 1}</td>
+                    <td>{player.name}</td>
+                    <td>{getScoreText(player.score)}</td>
+                  </tr>
+                ))}
             </tbody>
           </table>
-          <button onClick={handleNext} className="game-over__next-question-btn">
+          <button
+            onClick={handleNext}
+            className="game-over__next-question-btn"
+          >
             ➡️ Следующий вопрос
           </button>
         </div>
       )}
 
       {/* Конец игры */}
-      {gameOver && <GameOver leaderboard={leaderBoard} totalQuestions={questions.length} />}
+      {gameOver && (
+        <GameOver
+          leaderboard={leaderBoard}
+          totalQuestions={questions.length}
+        />
+      )}
     </div>
   );
 };

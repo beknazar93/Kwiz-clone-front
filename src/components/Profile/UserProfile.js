@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Winners from "./Winners";
 
-
 const UserProfile = () => {
   const [profile, setProfile] = useState({
     id: 1,
@@ -15,7 +14,10 @@ const UserProfile = () => {
   const [showHistory, setShowHistory] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showNamesModal, setShowNamesModal] = useState(false); // Новое состояние для модального окна с именами
   const [modalType, setModalType] = useState(null);
+  const [namesModalType, setNamesModalType] = useState(null); // Тип модального окна (participants или students)
+  const [namesList, setNamesList] = useState([]); // Список имён для отображения
   const [newSchoolName, setNewSchoolName] = useState("");
   const [newClassName, setNewClassName] = useState("");
   const [newStudentName, setNewStudentName] = useState("");
@@ -95,6 +97,19 @@ const UserProfile = () => {
     setCurrentLevelId(null);
     setSelectedStudent(null);
     setSelectedParticipant(null);
+  };
+
+  // Функции для открытия и закрытия модального окна с именами
+  const openNamesModal = (type, names) => {
+    setNamesModalType(type);
+    setNamesList(names || []);
+    setShowNamesModal(true);
+  };
+
+  const closeNamesModal = () => {
+    setShowNamesModal(false);
+    setNamesModalType(null);
+    setNamesList([]);
   };
 
   const handleAdd = () => {
@@ -342,16 +357,26 @@ const UserProfile = () => {
                           <td rowSpan={maxRows}>{school.name}</td>
                         ) : null}
                         <td>{hasLevel ? level.title : "-"}</td>
-                        <td>{hasLevel ? (level.participants?.length || 0) : "-"}</td>
+                        <td
+                          className="user-profile__clickable-cell"
+                          onClick={() => hasLevel && level.participants?.length > 0 && openNamesModal("participants", level.participants)}
+                        >
+                          {hasLevel ? (level.participants?.length || 0) : "-"}
+                        </td>
                         <td>{hasClass ? cls.name : "-"}</td>
-                        <td>{hasClass ? (cls.students?.length || 0) : "-"}</td>
+                        <td
+                          className="user-profile__clickable-cell"
+                          onClick={() => hasClass && cls.students?.length > 0 && openNamesModal("students", cls.students)}
+                        >
+                          {hasClass ? (cls.students?.length || 0) : "-"}
+                        </td>
                         <td>
                           {(hasLevel || hasClass) && (
                             <button
                               className="user-profile__action-btn user-profile__action-btn--danger"
                               onClick={() => openDeleteModal(school.id, cls?.id, level?.id)}
                             >
-                              🗑️ Удалить
+                              Действия
                             </button>
                           )}
                         </td>
@@ -510,6 +535,32 @@ const UserProfile = () => {
               </button>
               <button className="user-profile__action-btn" onClick={closeDeleteModal}>
                 Отмена
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showNamesModal && (
+        <div className="user-profile__modal">
+          <div className="user-profile__modal-content">
+            <h3 className="user-profile__modal-title">
+              {namesModalType === "participants" ? "Список участников" : "Список учеников"}
+            </h3>
+            <div className="user-profile__names-modal-list">
+              {namesList.length > 0 ? (
+                namesList.map((name, index) => (
+                  <span key={index} className="user-profile__name-item">
+                    {name}
+                  </span>
+                ))
+              ) : (
+                <p className="user-profile__no-names">Список пуст</p>
+              )}
+            </div>
+            <div className="user-profile__modal-buttons">
+              <button className="user-profile__action-btn" onClick={closeNamesModal}>
+                Закрыть
               </button>
             </div>
           </div>

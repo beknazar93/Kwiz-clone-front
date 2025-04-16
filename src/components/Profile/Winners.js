@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-
 const Winners = () => {
   const [history, setHistory] = useState([]);
 
@@ -29,29 +28,36 @@ const Winners = () => {
         <p className="winners__empty">История пока пуста</p>
       ) : (
         <ul className="winners__history-list">
-          {history.map((match) => (
-            <li key={match.id} className="winners__history-item">
-              <h4 className="winners__quiz-name">
-                {match.quiz_name} ({match.level})
-              </h4>
-              <p className="winners__date">
-                Дата: {new Date(match.date).toLocaleString()}
-              </p>
-              <ul className="winners__history-winners">
-                {match.winners.map((winner, index) => (
-                  <li key={winner.id} className="winners__history-winner">
-                    {index + 1}. {winner.name} - {winner.score} очков
-                  </li>
-                ))}
-              </ul>
-              <button
-                className="winners__delete-btn"
-                onClick={() => handleDelete(match.id)}
-              >
-                Удалить
-              </button>
-            </li>
-          ))}
+          {history.map((match) => {
+            // Сортируем победителей по убыванию очков
+            const sortedWinners = [...match.winners].sort(
+              (a, b) => b.score - a.score
+            );
+
+            return (
+              <li key={match.id} className="winners__history-item">
+                <h4 className="winners__quiz-name">
+                   ({match.level})
+                </h4>
+                <p className="winners__date">
+                  Дата: {new Date(match.date).toLocaleString()}
+                </p>
+                <ul className="winners__history-winners">
+                  {sortedWinners.map((winner, index) => (
+                    <li key={winner.id} className="winners__history-winner">
+                      {index + 1}. {winner.name} - {winner.score} очков
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  className="winners__delete-btn"
+                  onClick={() => handleDelete(match.id)}
+                >
+                  Удалить
+                </button>
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>
