@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+.player {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #46178f, #2b1d6a);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: "Poppins", "Inter", sans-serif;
+  color: #ffffff;
+  text-align: center;
+  gap: 24px;
+}
+
+.player__info {
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffcb05;
+  margin-bottom: 20px;
+}
+
+.player__access-denied {
+  background-color: #3e1a82;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  max-width: 400px;
+}
+
+.player__error {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ff5555;
+  margin-bottom: 10px;
+}
+
+.player__error-message {
+  font-size: 16px;
+  color: #d3d3d3;
+}
+
+.player__game-results {
+  background-color: #3e1a82;
+  padding: 20px 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 400px;
+}
+
+.player__waiting {
+  font-size: 20px;
+  color: #ffcb05;
+  font-weight: 500;
+}
+
+.player__prepare-text {
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffcb05;
+}
+
+.player__waiting-question {
+  font-size: 20px;
+  color: #ffcb05;
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .player__access-denied,
+  .player__game-results {
+    max-width: 360px;
+    padding: 20px;
+  }
+
+  .player__info {
+    font-size: 20px;
+  }
+
+  .player__error {
+    font-size: 22px;
+  }
+
+  .player__error-message {
+    font-size: 14px;
+  }
+
+  .player__waiting,
+  .player__waiting-question {
+    font-size: 18px;
+  }
+
+  .player__prepare-text {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 320px) {
+  .player__access-denied,
+  .player__game-results {
+    max-width: 300px;
+    padding: 16px;
+  }
+
+  .player__info {
+    font-size: 18px;
+  }
+
+  .player__error {
+    font-size: 20px;
+  }
+
+  .player__prepare-text {
+    font-size: 22px;
+  }
+}

@@ -1,0 +1,85 @@
+/* Импорты оставляем как есть */
+@import "./components/Landing/Landing.scss";
+@import "./scss/host/main.scss";
+@import "./scss/host/newquiz.scss";
+@import "./scss/host/questions.scss";
+@import "./scss/host/newquestions.scss";
+@import "./scss/host/editquestions.scss";
+@import "./scss/game/game.scss";
+@import "./scss/game/gameover.scss";
+@import "./scss/game/player.scss";
+@import "./scss/game/playerquestions.scss";
+@import "./scss/game/timer.scss";
+
+@import "./scss/user/UserProfile.scss";
+@import "./scss/user/Winners.scss";
+@import "./scss/user/SchoolManag.scss";
+@import "./scss/user/door.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1f1f1f;
+  color: #ffffff;
+  font-family: "Inter", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+input,
+select {
+  background-color: #2d2d2d;
+  color: #ffffff;
+  border: 1px solid #4a4a4a;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+input::placeholder {
+  color: #d3d3d3;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #2d2d2d;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #4a4a4a;
+  color: #ffffff;
+}
+
+th {
+  background-color: #4a4a4a;
+  font-weight: 600;
+}
+
+.error {
+  color: #ff5555;
+  text-align: center;
+  margin: 10px 0;
+}
+
+a {
+  color: #4a90e2;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #d4a017;
+}

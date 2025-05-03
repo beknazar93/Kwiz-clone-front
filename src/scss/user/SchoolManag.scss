@@ -1,0 +1,197 @@
+.school-management__container {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #1f1f1f;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.school-management__error {
+  color: #ff5555;
+  text-align: center;
+  font-size: 16px;
+}
+
+.school-management__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.school-management__title {
+  font-size: 28px;
+  color: #ffffff;
+}
+
+.school-management__action-btn {
+  background-color: #4a90e2;
+  color: #ffffff;
+  padding: 10px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #d4a017;
+  }
+
+  &--danger {
+    background-color: #ff5555;
+
+    &:hover {
+      background-color: #ff2222;
+    }
+  }
+}
+
+.school-management__tabs {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 10px;
+  background-color: #2d2d2d;
+  border-radius: 12px;
+}
+
+.school-management__tab {
+  background-color: #4a4a4a;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &--active {
+    background-color: #4a90e2;
+  }
+}
+
+.school-management__content {
+  background-color: #383838;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.school-management__modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 9999;
+}
+
+.school-management__modal-content {
+  background-color: #383838;
+  padding: 30px 20px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.school-management__modal-title {
+  font-size: 24px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.school-management__modal-input {
+  background-color: #2d2d2d;
+  color: #ffffff;
+  border: 1px solid #4a4a4a;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.school-management__modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .school-management__container {
+    padding: 20px 16px;
+    border-radius: 0;
+    gap: 24px;
+  }
+
+  .school-management__header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .school-management__title {
+    font-size: 20px;
+  }
+
+  .school-management__action-btn {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .school-management__tabs {
+    flex-direction: column;
+    gap: 10px;
+    padding: 8px;
+  }
+
+  .school-management__tab {
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .school-management__content {
+    padding: 16px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .school-management__modal-content {
+    padding: 20px 16px;
+    gap: 16px;
+  }
+
+  .school-management__modal-title {
+    font-size: 18px;
+  }
+
+  .school-management__modal-input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .school-management__modal-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .school-management__action-btn--danger {
+    width: 100%;
+  }
+}
