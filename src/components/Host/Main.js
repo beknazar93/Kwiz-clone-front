@@ -3,7 +3,7 @@ import { Link, Navigate } from "react-router-dom"; // ⬅ заменили Redir
 import axios from "axios";
 import { connect } from "react-redux";
 import { selectedQuiz, editingQuiz } from "../../Ducks/Reducer";
-import Kwizz from "../../Assests/logo.png";
+import Kwizz from "../../Assests/логотип123.png";
 
 class Main extends Component {
   constructor() {
