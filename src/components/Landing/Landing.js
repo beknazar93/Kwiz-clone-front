@@ -6,7 +6,7 @@ import {
   selectedPin,
   setAllowedStudents,
 } from "../../Ducks/Reducer";
-import Kwizz from "../../Assests/logo.png";
+import Kwizz from "../../Assests/логотип123.png";
 import axios from "axios";
 
 const Landing = () => {
